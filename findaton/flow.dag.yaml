@@ -1,0 +1,53 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  text:
+    type: string
+    default: 벚꽃, 신용점수
+    is_chat_input: true
+    is_chat_history: false
+  chat_history:
+    type: list
+    default: []
+    is_chat_history: true
+outputs:
+  output_prompt:
+    type: string
+    reference: ${Vector_DB_Lookup_c7mw.output}
+  answer:
+    type: string
+    is_chat_output: true
+    reference: ${keyword_to_ads.output}
+nodes:
+- name: Embedding
+  type: python
+  source:
+    type: package
+    tool: promptflow.tools.embedding.embedding
+  inputs:
+    connection: web_class_swithzerland
+    deployment_name: text-embedding-ada-002
+    input: ${inputs.text}
+- name: Vector_DB_Lookup_c7mw
+  type: python
+  source:
+    type: package
+    tool: promptflow_vectordb.tool.vector_db_lookup.VectorDBLookup.search
+  inputs:
+    connection: legal-sample-dj
+    index_name: azureblob-index
+    vector_field: contents_vector
+    vector: ${Embedding.output}
+- name: keyword_to_ads
+  type: llm
+  source:
+    type: code
+    path: keyword_to_ads.jinja2
+  inputs:
+    deployment_name: gpt-35-turbo
+    model: gpt-3.5-turbo
+    max_tokens: 256
+    temperature: 0.7
+  connection: web_class_swithzerland
+  api: chat

@@ -159,7 +159,47 @@
     }
   },
   "code": {
-    "chat.jinja2": {
+    "hello.jinja2": {
+      "type": "prompt",
+      "inputs": {
+        "text": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "description": "Please replace the template with your own prompt.",
+      "source": "hello.jinja2"
+    },
+    "hello.py": {
+      "type": "python",
+      "inputs": {
+        "input1": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "hello.py",
+      "function": "my_python_tool"
+    },
+    "keywords_to_ads.jinja2": {
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "keywords_to_ads.jinja2"
+    },
+    "llm_node_fsp8.jinja2": {
       "type": "llm",
       "inputs": {
         "chat_history": {
@@ -173,54 +213,15 @@
           ]
         }
       },
+      "source": "llm_node_fsp8.jinja2"
+    },
+    "chat.jinja2": {
+      "type": "llm",
       "source": "chat.jinja2"
     },
-    "embeded_vector.py": {
-      "type": "python",
-      "inputs": {
-        "input": {
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "source": "embeded_vector.py",
-      "function": "embeded_vector"
-    },
-    "fetch_text_content_from_url.py": {
-      "type": "python",
-      "inputs": {
-        "url": {
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "source": "fetch_text_content_from_url.py",
-      "function": "fetch_text_content_from_url"
-    },
-    "search_text_from_ai_search.py": {
-      "type": "python",
-      "inputs": {
-        "text": {
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "source": "search_text_from_ai_search.py",
-      "function": "search_text_from_ai_search"
-    },
-    "prompt_node_yt79.jinja2": {
-      "type": "prompt",
-      "inputs": {
-        "text": {
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "source": "prompt_node_yt79.jinja2"
+    "keyword_to_ads.jinja2": {
+      "type": "llm",
+      "source": "keyword_to_ads.jinja2"
     }
   }
 }

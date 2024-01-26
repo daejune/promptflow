@@ -3,18 +3,6 @@
   "code": {
     "chat.jinja2": {
       "type": "llm",
-      "inputs": {
-        "chat_history": {
-          "type": [
-            "string"
-          ]
-        },
-        "question": {
-          "type": [
-            "string"
-          ]
-        }
-      },
       "source": "chat.jinja2"
     },
     "chat_variant_1.jinja2": {

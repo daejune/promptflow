@@ -1,6 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/promptflow/latest/AzureOpenAIConnection.schema.json
 name: open_ai_connection
 type: azure_open_ai
-api_key: "<user-input>"
-api_base: "<user-input>"
+api_key: "2014112a795a4f0ebcd43201a9875574"
+api_base: "https://findaton-team-10.openai.azure.com/"
 api_type: "azure"
